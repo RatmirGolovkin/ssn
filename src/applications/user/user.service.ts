@@ -19,7 +19,9 @@ export class UserService {
     private jwtService: JwtService,
   ) {}
 
-  async get() {}
+  async get(req) {
+    return this.userModel.findOne({ _id: req.user.id });
+  }
 
   async register(registerDto: RegisterDto) {
     const existedUser = await this.userModel.findOne({

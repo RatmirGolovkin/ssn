@@ -26,7 +26,9 @@ export class UserController {
 
   @UseGuards(UserGuard)
   @Get('get')
-  getProfile() {}
+  getProfile(@Request() req) {
+    return this.userService.get(req);
+  }
 
   @Post('register')
   @UseInterceptors(FileInterceptor('uploadFile'))
